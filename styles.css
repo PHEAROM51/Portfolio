@@ -1,7 +1,3 @@
-/* ============================================================
-   BASE RESET & ROOT SCALE
-   html font-size: 62.5%  →  1rem = 10px
-   ============================================================ */
 *, *::before, *::after {
   box-sizing: border-box;
   margin: 0;
@@ -10,12 +6,9 @@
 
 html {
   scroll-behavior: smooth;
-  font-size: 80%; /* 1rem = 10px */
+  font-size: 80%; 
 }
 
-/* ============================================================
-   DESIGN TOKENS
-   ============================================================ */
 :root {
   --b1:  #1E2120;
   --b2:  #242E2A;
@@ -32,20 +25,16 @@ html {
   --font-sans:  'DM Sans', system-ui, sans-serif;
 }
 
-/* ============================================================
-   BODY / SITE SHELL
-   ============================================================ */
+/* BODY */
 body {
   background: var(--b1);
   color: var(--b7);
   font-family: var(--font-serif);
-  font-size: 1.6rem; /* 16px equivalent */
+  font-size: 1.6rem; 
   line-height: 1.6;
 }
 
-/* ============================================================
-   NAV
-   ============================================================ */
+/* NAV */
 .nav {
   background: var(--b11);
   display: flex;
@@ -56,6 +45,7 @@ body {
   position: sticky;
   top: 0;
   z-index: 100;
+  border-bottom: 0.1rem solid var(--b3);
 }
 
 .nav-name {
@@ -92,9 +82,7 @@ body {
   color: #fff;
 }
 
-/* ============================================================
-   HERO
-   ============================================================ */
+/* HERO */
 .hero {
   background: var(--b11);
   padding: 4.5rem 2.5rem 4rem;
@@ -106,8 +94,62 @@ body {
   font-size: 1.3rem;
   letter-spacing: 0.14em;
   text-transform: uppercase;
-  color: rgba(255, 255, 255, 0.55);
+  color: var(--b4);
   margin-bottom: 1.6rem;
+}
+
+/* PROFILE */
+.profile {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 3rem;
+  margin-bottom: 2.8rem;
+}
+
+.profile-description {
+  flex: 1 1 0;
+  min-width: 0;
+}
+
+.profile-pic {
+  z-index: 0;
+  flex: 0 0 auto;
+  width: 35rem;
+  aspect-ratio: 3.5 / 4;
+  border-radius: 1.2rem;
+  overflow: hidden;
+  border: 2px solid rgba(255, 255, 255, 0.12);
+  box-shadow:
+    0 0 0 6px rgba(48, 221, 91, 0.08),
+    0 2rem 4rem rgba(0, 0, 0, 0.45);
+  position: relative;
+}
+
+.profile-pic::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    transparent 60%,
+    rgba(10, 67, 47, 0.35) 100%
+  );
+  pointer-events: none;
+}
+
+.profile-pic img {
+  z-index: -1;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+  display: block;
+  transition: transform 0.5s ease;
+}
+
+.profile-pic:hover img {
+  transform: scale(1.04);
 }
 
 .hero h1 {
@@ -120,6 +162,7 @@ body {
 }
 
 .hero h1 em {
+  z-index: 100;
   color: var(--b7);
   font-style: italic;
 }
@@ -127,16 +170,17 @@ body {
 .hero-desc {
   font-family: var(--font-sans);
   font-size: 1.6rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: var(--b9);
   line-height: 1.9;
   max-width: 56rem;
-  margin-bottom: 2.8rem;
+  margin-bottom: 0;
 }
 
 .hero-badges {
   display: flex;
   gap: 1rem;
   flex-wrap: wrap;
+  margin-top: 2.4rem;
 }
 
 .hbadge {
@@ -147,9 +191,9 @@ body {
 }
 
 .hb-white {
-  background: rgba(255, 255, 255, 0.12);
+  background: var(--b2);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  color: #fff;
+  color: var(--b4);
 }
 
 .hb-lime {
@@ -158,9 +202,32 @@ body {
   color: var(--b1);
 }
 
-/* ============================================================
-   SHARED SECTION HELPERS
-   ============================================================ */
+/* ABOUT */
+.quote-block {
+  border-left: 4px solid var(--b11);
+  padding: 1.25rem 1.75rem;
+  background: var(--b3);
+  border-radius: 0 0.6rem 0.6rem 0;
+  margin-bottom: 1.5rem;
+}
+
+.quote-text {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-style: italic;
+  color: var(--b7);
+  line-height: 1.7;
+}
+
+.about-body {
+  font-family: var(--font-sans);
+  font-size: 1.6rem;
+  color: var(--b9);
+  line-height: 1.9;
+  margin-top: 1.25rem;
+}
+
+/* SECTION */
 .section {
   padding: 3rem 2.5rem;
 }
@@ -179,7 +246,7 @@ body {
 
 .sec-rule {
   width: 4.8rem;
-  height: 0.3rem;
+  height: 0.4rem;
   background: var(--b11);
   margin-bottom: 2rem;
   border-radius: 0;
@@ -193,9 +260,119 @@ body {
   margin-bottom: 1.5rem;
 }
 
-/* ============================================================
-   PROJECTS
-   ============================================================ */
+/* EDUCATION */
+.edu-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+}
+
+.edu-card {
+  border-radius: 0.6rem;
+  padding: 1.5rem 1.75rem;
+  background: var(--b1);
+  border: 0.5px solid var(--b8);
+  border-top: 3px solid var(--b4);
+}
+
+.edu-card--sage { border-top-color: var(--b4); }
+
+.edu-year {
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
+  color: var(--b4);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.8rem;
+}
+
+.edu-deg {
+  font-family: var(--font-serif);
+  font-size: 1.7rem;
+  color: var(--b7);
+  margin-bottom: 0.5rem;
+}
+
+.edu-school {
+  font-family: var(--font-sans);
+  font-size: 1.3rem;
+  color: var(--b9);
+}
+
+.edu-gpa {
+  font-family: var(--font-sans);
+  font-size: 1.4rem;
+  color: var(--b7);
+  margin-top: 0.8rem;
+  font-weight: 500;
+}
+
+/* SKILL */
+.skills-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1rem;
+}
+
+.skill-row {
+  border-radius: 0.6rem;
+  padding: 1.4rem 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  border-left: 5px solid var(--b4);
+}
+
+.sr-b, .sr-a{ background: var(--b3); border-left-color: var(--b4); }
+
+.skill-name {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  color: var(--b9);
+}
+
+/* CERTIFICATIONS */
+.cert-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+}
+
+.cert-card {
+  border-radius: 0.6rem;
+  padding: 1.75rem;
+}
+
+.cc-main { background: var(--b11); }
+.cc-sec  { background: var(--b2); border: 0.5px solid var(--b8); }
+
+.cert-title {
+  font-family: var(--font-serif);
+  font-size: 1.9rem;
+  margin-bottom: 0.6rem;
+}
+
+.cc-main .cert-title { color: #fff; }
+.cc-sec  .cert-title { color: var(--b7); }
+
+.cert-by {
+  font-family: var(--font-sans);
+  font-size: 1.4rem;
+}
+
+.cc-main .cert-by { color: rgba(255, 255, 255); }
+.cc-sec  .cert-by { color: var(--b9); }
+
+.cert-year {
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  margin-top: 0.8rem;
+}
+
+.cc-main .cert-year { color: var(--b7); }
+.cc-sec  .cert-year { color: var(--b4); }
+
+/* PROJECTS */
 .proj-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
@@ -205,22 +382,17 @@ body {
 .proj-card {
   border-radius: 0.6rem;
   padding: 1.75rem;
-  border-top: 4px solid var(--b11);
+  border-top: 4px solid var(--b4) !important;
+  border: 2px solid var(--b11);
   background: var(--b2);
   transition: border-color 0.2s;
 }
 
-.proj-card.accent-green { border-top-color: var(--b11); }
-.proj-card.accent-sage  { border-top-color: var(--b4);  }
-.proj-card.accent-lime  { border-top-color: var(--b10); }
-
-.proj-card:hover { border-color: var(--b4); }
-
 .proj-num {
   font-family: var(--font-sans);
-  font-size: 1.1rem;
+  font-size: 1.2rem;
   letter-spacing: 0.1em;
-  color: var(--b11);
+  color: var(--b4);
   margin-bottom: 1rem;
   text-transform: uppercase;
 }
@@ -254,8 +426,6 @@ body {
   border-radius: 9.9rem;
 }
 
-.pt-green { background: var(--b11); color: #fff; }
-.pt-sage  { background: var(--b8);  color: var(--b7); }
 .pt-lime  { background: #2a2e10; color: var(--b10); border: 0.5px solid var(--b10); }
 
 .proj-link {
@@ -270,157 +440,10 @@ body {
 
 .proj-link:hover { color: var(--b7); }
 
-/* ============================================================
-   EDUCATION
-   ============================================================ */
-.edu-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.4rem;
-}
-
-.edu-card {
-  border-radius: 0.6rem;
-  padding: 1.5rem 1.75rem;
-  background: var(--b1);
-  border: 0.5px solid var(--b8);
-  border-top: 3px solid var(--b11);
-}
-
-.edu-card--sage { border-top-color: var(--b4); }
-
-.edu-year {
-  font-family: var(--font-sans);
-  font-size: 1.2rem;
-  color: var(--b4);
-  letter-spacing: 0.1em;
-  margin-bottom: 0.8rem;
-}
-
-.edu-deg {
-  font-family: var(--font-serif);
-  font-size: 1.7rem;
-  color: var(--b7);
-  margin-bottom: 0.5rem;
-}
-
-.edu-school {
-  font-family: var(--font-sans);
-  font-size: 1.3rem;
-  color: var(--b9);
-}
-
-.edu-gpa {
-  font-family: var(--font-sans);
-  font-size: 1.4rem;
-  color: var(--b10);
-  margin-top: 0.8rem;
-  font-weight: 500;
-}
-
-/* ============================================================
-   SKILLS
-   ============================================================ */
-.skills-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
-  gap: 1rem;
-}
-
-.skill-row {
-  border-radius: 0.6rem;
-  padding: 1.4rem 1.8rem;
-  display: flex;
-  align-items: center;
-  gap: 1.2rem;
-  border-left: 3px solid var(--b11);
-}
-
-.sr-a { background: var(--b2); }
-.sr-b { background: var(--b3); border-left-color: var(--b4); }
-
-.skill-name {
-  font-family: var(--font-sans);
-  font-size: 1.5rem;
-  color: var(--b9);
-}
-
-/* ============================================================
-   CERTIFICATIONS
-   ============================================================ */
-.cert-row {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 1.4rem;
-}
-
-.cert-card {
-  border-radius: 0.6rem;
-  padding: 1.75rem;
-}
-
-.cc-main { background: var(--b11); }
-.cc-sec  { background: var(--b2); border: 0.5px solid var(--b8); }
-
-.cert-title {
-  font-family: var(--font-serif);
-  font-size: 1.9rem;
-  margin-bottom: 0.6rem;
-}
-
-.cc-main .cert-title { color: #fff; }
-.cc-sec  .cert-title { color: var(--b7); }
-
-.cert-by {
-  font-family: var(--font-sans);
-  font-size: 1.4rem;
-}
-
-.cc-main .cert-by { color: rgba(255, 255, 255, 0.65); }
-.cc-sec  .cert-by { color: var(--b9); }
-
-.cert-year {
-  font-family: var(--font-sans);
-  font-size: 1.2rem;
-  letter-spacing: 0.1em;
-  margin-top: 0.8rem;
-}
-
-.cc-main .cert-year { color: var(--b7); }
-.cc-sec  .cert-year { color: var(--b4); }
-
-/* ============================================================
-   ABOUT
-   ============================================================ */
-.quote-block {
-  border-left: 4px solid var(--b11);
-  padding: 1.25rem 1.75rem;
-  background: var(--b3);
-  border-radius: 0 0.6rem 0.6rem 0;
-  margin-bottom: 1.5rem;
-}
-
-.quote-text {
-  font-family: var(--font-serif);
-  font-size: 2rem;
-  font-style: italic;
-  color: var(--b7);
-  line-height: 1.7;
-}
-
-.about-body {
-  font-family: var(--font-sans);
-  font-size: 1.6rem;
-  color: var(--b9);
-  line-height: 1.9;
-  max-width: 60rem;
-  margin-top: 1.25rem;
-}
-
-/* ============================================================
-   FOOTER
-   ============================================================ */
+/* FOOTER */
 .footer {
+  width: 100%;
+  border-top: 0.1rem solid #182F32;
   background: var(--b11);
   padding: 1.75rem 2.5rem;
   display: flex;
@@ -433,30 +456,30 @@ body {
 .footer-left {
   font-family: var(--font-sans);
   font-size: 1.4rem;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--b9);
 }
 
 .footer-right {
+  
   display: flex;
   gap: 2rem;
 }
 
-.footer-right a {
+.footer-right a, .footer-right p {
   font-family: var(--font-sans);
   font-size: 1.4rem;
-  color: rgba(255, 255, 255, 0.65);
+  color: var(--b9);
   text-decoration: none;
   transition: color 0.2s;
 }
 
 .footer-right a:hover { color: #fff; }
 
-/* ============================================================
-   RESPONSIVE — TABLET  (max-width: 768px)
-   Bump base font to 68.75%  →  1rem ≈ 11px
-   ============================================================ */
+
+
+/* TABLET */
 @media (max-width: 768px) {
-  html { font-size: 68.75%; } /* 1rem ≈ 11px — slightly larger for readability */
+  html { font-size: 68.75%; } 
 
   .nav {
     padding: 0 1.6rem;
@@ -469,7 +492,29 @@ body {
 
   .hero { padding: 3.5rem 1.6rem 3rem; }
 
-  .hero h1 { font-size: 4rem; }
+  .hero-sub {text-align: center;}
+
+  .hero-desc {text-align: center;}
+
+  .hero-badges {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+  }
+
+  .hbadge {text-align: center;}
+  
+  .hero h1 { font-size: 4rem; text-align: center;}
+
+  .profile {
+    flex-direction: column-reverse;
+    align-items: flex-start;
+    gap: 2rem;
+  }
+
+  .profile-pic {
+    width: clamp(14rem, 40vw, 20rem);
+    align-self: center;
+  }
 
   .proj-grid {
     grid-template-columns: 1fr;
@@ -487,27 +532,25 @@ body {
   .section { padding: 2.5rem 1.6rem; }
 }
 
-/* ============================================================
-   RESPONSIVE — PHONE  (max-width: 480px)
-   Bump base font to 75%  →  1rem ≈ 12px
-   ============================================================ */
-@media (max-width: 480px) {
-  html { font-size: 75%; } /* 1rem = 12px — comfortable on small screens */
+/* MOBILE PHONE */
+@media (max-width: 500px) {
+  html { font-size: 75%; } 
 
   .nav {
-    padding: 0 1.2rem;
+    padding: 1rem 1.2rem;
     height: auto;
-    padding-top: 1rem;
-    padding-bottom: 1rem;
     flex-direction: column;
-    align-items: flex-start;
+    align-items: center;
     gap: 0.8rem;
   }
 
-  .nav-name { font-size: 1.6rem; }
+  .nav-name { 
+    font-size: 1.6rem; 
+  }
 
   .nav-links {
-    gap: 1.2rem;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
     flex-wrap: wrap;
   }
 
@@ -515,17 +558,41 @@ body {
 
   .hero { padding: 2.8rem 1.2rem 2.4rem; }
 
-  .hero-sub { font-size: 1.1rem; }
+  .hero-sub { font-size: 1.1rem; text-align: center;}
 
-  .hero h1 { font-size: 3.2rem; }
+  .hero h1 { 
+    font-size: 3.2rem; 
+    text-align: center;
+  }
 
-  .hero-desc { font-size: 1.5rem; }
+  .hero-desc { font-size: 1.5rem; text-align: center;}
+
+  .hero-badges {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    margin: 1rem;
+  }
+  .hbadge {text-align: center;}
+
+  .profile {
+    flex-direction: column-reverse;
+    align-items: center;
+    gap: 2.4rem;
+  }
+
+  .profile-description { width: 100%; }
+
+  .profile-pic {
+    width: clamp(16rem, 65vw, 22rem);
+  }
 
   .hbadge { font-size: 1.2rem; padding: 0.6rem 1.4rem; }
 
   .section { padding: 2.4rem 1.2rem; }
 
-  .proj-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+  .proj-grid { 
+    grid-template-columns: 1fr; gap: 1.2rem; 
+  }
 
   .proj-name { font-size: 1.7rem; }
 
