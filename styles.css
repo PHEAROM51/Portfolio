@@ -1,0 +1,553 @@
+/* ============================================================
+   BASE RESET & ROOT SCALE
+   html font-size: 62.5%  →  1rem = 10px
+   ============================================================ */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: smooth;
+  font-size: 80%; /* 1rem = 10px */
+}
+
+/* ============================================================
+   DESIGN TOKENS
+   ============================================================ */
+:root {
+  --b1:  #1E2120;
+  --b2:  #242E2A;
+  --b3:  #182F32;
+  --b4:  #30dd5b;
+  --b7:  #cfc845;
+  --b8:  #35473D;
+  --b9:  #fff;
+  --b10: #BABA75;
+  --b11: #0a432f;
+  --b12: #AF7126;
+
+  --font-serif: 'Lora', Georgia, serif;
+  --font-sans:  'DM Sans', system-ui, sans-serif;
+}
+
+/* ============================================================
+   BODY / SITE SHELL
+   ============================================================ */
+body {
+  background: var(--b1);
+  color: var(--b7);
+  font-family: var(--font-serif);
+  font-size: 1.6rem; /* 16px equivalent */
+  line-height: 1.6;
+}
+
+/* ============================================================
+   NAV
+   ============================================================ */
+.nav {
+  background: var(--b11);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 2.5rem;
+  height: 6rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.nav-name {
+  font-family: var(--font-serif);
+  font-size: 1.8rem;
+  color: #fff;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.nav-links {
+  display: flex;
+  gap: 2.8rem;
+  list-style: none;
+}
+
+.nav-links a {
+  font-family: var(--font-sans);
+  font-size: 1.3rem;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.6);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.nav-links a.active {
+  color: #fff;
+  border-bottom: 2px solid #fff;
+  padding-bottom: 0.2rem;
+}
+
+.nav-links a:hover {
+  color: #fff;
+}
+
+/* ============================================================
+   HERO
+   ============================================================ */
+.hero {
+  background: var(--b11);
+  padding: 4.5rem 2.5rem 4rem;
+  border-bottom: 3px solid var(--b4);
+}
+
+.hero-sub {
+  font-family: var(--font-sans);
+  font-size: 1.3rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.55);
+  margin-bottom: 1.6rem;
+}
+
+.hero h1 {
+  font-family: var(--font-serif);
+  font-size: 5.2rem;
+  font-weight: 400;
+  color: #fff;
+  line-height: 1.1;
+  margin-bottom: 2rem;
+}
+
+.hero h1 em {
+  color: var(--b7);
+  font-style: italic;
+}
+
+.hero-desc {
+  font-family: var(--font-sans);
+  font-size: 1.6rem;
+  color: rgba(255, 255, 255, 0.7);
+  line-height: 1.9;
+  max-width: 56rem;
+  margin-bottom: 2.8rem;
+}
+
+.hero-badges {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+}
+
+.hbadge {
+  font-family: var(--font-sans);
+  font-size: 1.3rem;
+  padding: 0.7rem 1.8rem;
+  border-radius: 9.9rem;
+}
+
+.hb-white {
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: #fff;
+}
+
+.hb-lime {
+  background: var(--b10);
+  border: none;
+  color: var(--b1);
+}
+
+/* ============================================================
+   SHARED SECTION HELPERS
+   ============================================================ */
+.section {
+  padding: 3rem 2.5rem;
+}
+
+.section.alt  { background: var(--b2); }
+.section.dark { background: var(--b3); }
+
+.sec-label {
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--b4);
+  margin-bottom: 0.8rem;
+}
+
+.sec-rule {
+  width: 4.8rem;
+  height: 0.3rem;
+  background: var(--b11);
+  margin-bottom: 2rem;
+  border-radius: 0;
+}
+
+.sec-h2 {
+  font-family: var(--font-serif);
+  font-size: 2.8rem;
+  font-weight: 400;
+  color: var(--b7);
+  margin-bottom: 1.5rem;
+}
+
+/* ============================================================
+   PROJECTS
+   ============================================================ */
+.proj-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 1.6rem;
+}
+
+.proj-card {
+  border-radius: 0.6rem;
+  padding: 1.75rem;
+  border-top: 4px solid var(--b11);
+  background: var(--b2);
+  transition: border-color 0.2s;
+}
+
+.proj-card.accent-green { border-top-color: var(--b11); }
+.proj-card.accent-sage  { border-top-color: var(--b4);  }
+.proj-card.accent-lime  { border-top-color: var(--b10); }
+
+.proj-card:hover { border-color: var(--b4); }
+
+.proj-num {
+  font-family: var(--font-sans);
+  font-size: 1.1rem;
+  letter-spacing: 0.1em;
+  color: var(--b11);
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+
+.proj-name {
+  font-family: var(--font-serif);
+  font-size: 1.9rem;
+  color: var(--b7);
+  margin-bottom: 1rem;
+  line-height: 1.3;
+}
+
+.proj-desc {
+  font-family: var(--font-sans);
+  font-size: 1.4rem;
+  color: var(--b9);
+  line-height: 1.8;
+}
+
+.proj-tags {
+  display: flex;
+  gap: 0.6rem;
+  margin-top: 1.4rem;
+  flex-wrap: wrap;
+}
+
+.ptag {
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
+  padding: 0.4rem 1.2rem;
+  border-radius: 9.9rem;
+}
+
+.pt-green { background: var(--b11); color: #fff; }
+.pt-sage  { background: var(--b8);  color: var(--b7); }
+.pt-lime  { background: #2a2e10; color: var(--b10); border: 0.5px solid var(--b10); }
+
+.proj-link {
+  font-family: var(--font-sans);
+  font-size: 1.3rem;
+  color: var(--b4);
+  margin-top: 1.4rem;
+  display: inline-block;
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.proj-link:hover { color: var(--b7); }
+
+/* ============================================================
+   EDUCATION
+   ============================================================ */
+.edu-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+}
+
+.edu-card {
+  border-radius: 0.6rem;
+  padding: 1.5rem 1.75rem;
+  background: var(--b1);
+  border: 0.5px solid var(--b8);
+  border-top: 3px solid var(--b11);
+}
+
+.edu-card--sage { border-top-color: var(--b4); }
+
+.edu-year {
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
+  color: var(--b4);
+  letter-spacing: 0.1em;
+  margin-bottom: 0.8rem;
+}
+
+.edu-deg {
+  font-family: var(--font-serif);
+  font-size: 1.7rem;
+  color: var(--b7);
+  margin-bottom: 0.5rem;
+}
+
+.edu-school {
+  font-family: var(--font-sans);
+  font-size: 1.3rem;
+  color: var(--b9);
+}
+
+.edu-gpa {
+  font-family: var(--font-sans);
+  font-size: 1.4rem;
+  color: var(--b10);
+  margin-top: 0.8rem;
+  font-weight: 500;
+}
+
+/* ============================================================
+   SKILLS
+   ============================================================ */
+.skills-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(18rem, 1fr));
+  gap: 1rem;
+}
+
+.skill-row {
+  border-radius: 0.6rem;
+  padding: 1.4rem 1.8rem;
+  display: flex;
+  align-items: center;
+  gap: 1.2rem;
+  border-left: 3px solid var(--b11);
+}
+
+.sr-a { background: var(--b2); }
+.sr-b { background: var(--b3); border-left-color: var(--b4); }
+
+.skill-name {
+  font-family: var(--font-sans);
+  font-size: 1.5rem;
+  color: var(--b9);
+}
+
+/* ============================================================
+   CERTIFICATIONS
+   ============================================================ */
+.cert-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 1.4rem;
+}
+
+.cert-card {
+  border-radius: 0.6rem;
+  padding: 1.75rem;
+}
+
+.cc-main { background: var(--b11); }
+.cc-sec  { background: var(--b2); border: 0.5px solid var(--b8); }
+
+.cert-title {
+  font-family: var(--font-serif);
+  font-size: 1.9rem;
+  margin-bottom: 0.6rem;
+}
+
+.cc-main .cert-title { color: #fff; }
+.cc-sec  .cert-title { color: var(--b7); }
+
+.cert-by {
+  font-family: var(--font-sans);
+  font-size: 1.4rem;
+}
+
+.cc-main .cert-by { color: rgba(255, 255, 255, 0.65); }
+.cc-sec  .cert-by { color: var(--b9); }
+
+.cert-year {
+  font-family: var(--font-sans);
+  font-size: 1.2rem;
+  letter-spacing: 0.1em;
+  margin-top: 0.8rem;
+}
+
+.cc-main .cert-year { color: var(--b7); }
+.cc-sec  .cert-year { color: var(--b4); }
+
+/* ============================================================
+   ABOUT
+   ============================================================ */
+.quote-block {
+  border-left: 4px solid var(--b11);
+  padding: 1.25rem 1.75rem;
+  background: var(--b3);
+  border-radius: 0 0.6rem 0.6rem 0;
+  margin-bottom: 1.5rem;
+}
+
+.quote-text {
+  font-family: var(--font-serif);
+  font-size: 2rem;
+  font-style: italic;
+  color: var(--b7);
+  line-height: 1.7;
+}
+
+.about-body {
+  font-family: var(--font-sans);
+  font-size: 1.6rem;
+  color: var(--b9);
+  line-height: 1.9;
+  max-width: 60rem;
+  margin-top: 1.25rem;
+}
+
+/* ============================================================
+   FOOTER
+   ============================================================ */
+.footer {
+  background: var(--b11);
+  padding: 1.75rem 2.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.footer-left {
+  font-family: var(--font-sans);
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.65);
+}
+
+.footer-right {
+  display: flex;
+  gap: 2rem;
+}
+
+.footer-right a {
+  font-family: var(--font-sans);
+  font-size: 1.4rem;
+  color: rgba(255, 255, 255, 0.65);
+  text-decoration: none;
+  transition: color 0.2s;
+}
+
+.footer-right a:hover { color: #fff; }
+
+/* ============================================================
+   RESPONSIVE — TABLET  (max-width: 768px)
+   Bump base font to 68.75%  →  1rem ≈ 11px
+   ============================================================ */
+@media (max-width: 768px) {
+  html { font-size: 68.75%; } /* 1rem ≈ 11px — slightly larger for readability */
+
+  .nav {
+    padding: 0 1.6rem;
+    height: 5.6rem;
+    flex-wrap: wrap;
+    gap: 0.8rem;
+  }
+
+  .nav-links { gap: 1.6rem; }
+
+  .hero { padding: 3.5rem 1.6rem 3rem; }
+
+  .hero h1 { font-size: 4rem; }
+
+  .proj-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .edu-row,
+  .cert-row {
+    grid-template-columns: 1fr;
+  }
+
+  .skills-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .section { padding: 2.5rem 1.6rem; }
+}
+
+/* ============================================================
+   RESPONSIVE — PHONE  (max-width: 480px)
+   Bump base font to 75%  →  1rem ≈ 12px
+   ============================================================ */
+@media (max-width: 480px) {
+  html { font-size: 75%; } /* 1rem = 12px — comfortable on small screens */
+
+  .nav {
+    padding: 0 1.2rem;
+    height: auto;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.8rem;
+  }
+
+  .nav-name { font-size: 1.6rem; }
+
+  .nav-links {
+    gap: 1.2rem;
+    flex-wrap: wrap;
+  }
+
+  .nav-links a { font-size: 1.1rem; }
+
+  .hero { padding: 2.8rem 1.2rem 2.4rem; }
+
+  .hero-sub { font-size: 1.1rem; }
+
+  .hero h1 { font-size: 3.2rem; }
+
+  .hero-desc { font-size: 1.5rem; }
+
+  .hbadge { font-size: 1.2rem; padding: 0.6rem 1.4rem; }
+
+  .section { padding: 2.4rem 1.2rem; }
+
+  .proj-grid { grid-template-columns: 1fr; gap: 1.2rem; }
+
+  .proj-name { font-size: 1.7rem; }
+
+  .proj-desc { font-size: 1.3rem; }
+
+  .skills-grid { grid-template-columns: 1fr; }
+
+  .skill-name { font-size: 1.4rem; }
+
+  .quote-text { font-size: 1.7rem; }
+
+  .about-body { font-size: 1.5rem; }
+
+  .cert-title { font-size: 1.7rem; }
+
+  .edu-deg { font-size: 1.5rem; }
+
+  .footer {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 1.6rem 1.2rem;
+  }
+
+  .footer-right { gap: 1.4rem; }
+}
